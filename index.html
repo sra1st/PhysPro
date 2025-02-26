@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Shafiq Rahman Adi">
+  <meta name="editing" content="DeepSeek AI">
+  <meta name="Research & Resources" content="Tahmed Hossain">
+<meta name="description" content="PhysPro: Your one-stop solution for O/A Level physics study resources, past papers, and book PDFs for Cambridge and Edexcel exams.">
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PRQDDW6L');</script>
+  <!-- End Google Tag Manager -->
+
+<!-- Open Graph Tags (for social sharing) -->
+<meta property="og:title" content="PhysPro | One-Stop Solution to O/A Level Physics Resources">
+<meta property="og:image" content="https://yourdomain.com/physpro-icon.png">
+
+  <title>PhysPro</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* ==== YOUR EXISTING CSS ==== */
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      overflow: hidden;
+      font-family: 'Roboto', Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    header {
+      background-color: #000000;
+      color: #ffffff;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #1d1c1c;
+      flex: 0 0 auto;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-container img {
+      width: 40px;
+      height: auto;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    /* Hamburger Menu Icon */
+    .hamburger {
+      display: none; /* Hidden by default */
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background-color: #ffffff;
+      transition: all 0.3s ease;
+    }
+
+    /* Navigation Menu */
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav li {
+      position: relative;
+    }
+
+    nav a {
+      color: #ffffff;
+      text-decoration: none;
+      padding: 10px;
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #06c5ff;
+      color: #ffffff;
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #313030;
+      padding: 10px;
+      display: none;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      z-index: 1001; /* Higher z-index to appear above search */
+    }
+
+    nav li:hover .dropdown-menu {
+      display: block;
+    }
+
+    .dropdown-menu a {
+      color: #ffffff;
+      text-decoration: none;
+      padding: 5px 10px;
+      display: block;
+      border-radius: 3px;
+      transition: background-color 0.3s;
+    }
+
+    .dropdown-menu a:hover {
+      background-color: #06c5ff;
+    }
+
+    /* Hero Section */
+    .hero {
+      background-image: url("bg9.webp");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      color: #ffffff;
+      position: relative;
+    }
+
+    .search-container {
+  padding: 1.5rem; /* Desktop padding */
+  border-radius: 10px;
+  width: 600px; /* Desktop width */
+  max-width: 95%; /* Desktop max-width */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  box-sizing: border-box;
+}
+
+#searchResults {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  max-height: calc(100vh - 300px); /* Adjust based on available space */
+  overflow-y: auto; /* Enable vertical scrolling */
+  margin-top: 1rem;
+  text-align: left;
+  background-color: rgba(0, 0, 0, 0.9);
+  padding: 10px;
+  border-radius: 5px;
+  z-index: 999;
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: #06c5ff rgba(255, 255, 255, 0.1); /* Firefox */
+}
+
+/* Customize scrollbar */
+#searchResults::-webkit-scrollbar {
+  width: 8px; /* Slightly thicker scrollbar */
+}
+
+#searchResults::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1); /* Light track */
+  border-radius: 4px;
+}
+
+#searchResults::-webkit-scrollbar-thumb {
+  background: #06c5ff; /* Scrollbar color */
+  border-radius: 4px;
+}
+
+#searchResults::-webkit-scrollbar-thumb:hover {
+  background: #059dc7; /* Scrollbar hover color */
+}
+
+    .selector-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin: 1.5rem 0;
+    }
+
+    .level-selector, .board-selector {
+      padding: 12px;
+      border: 2px solid #06c5ff;
+      border-radius: 5px;
+      background: rgba(255, 255, 255, 0.9);
+      color: #000000;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .level-selector:hover, 
+    .board-selector:hover,
+    .level-selector:focus, 
+    .board-selector:focus {
+      border-color: #059dc7;
+      box-shadow: 0 0 8px rgba(6, 197, 255, 0.3);
+    }
+
+    .search-bar {
+      display: flex;
+      gap: 10px;
+      margin-top: 1rem;
+    }
+
+    #pdfSearch {
+      flex: 1;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      background: #ffffff;
+    }
+
+    .pdf-link {
+      display: block;
+      color: #06c5ff;
+      text-decoration: none;
+      padding: 8px 0;
+      transition: color 0.3s;
+    }
+
+    .pdf-link:hover {
+      color: #ffffff;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      75% { transform: translateX(5px); }
+    }
+
+    footer {
+  background-color: #000000;
+  border-top: 1px solid #1d1c1c;
+  color: #777777;
+  padding: 10px 20px;
+  font-size: 12px;
+  flex: 0 0 auto;
+  display: flex; /* Use Flexbox */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden; /* Hide overflow if content is too long */
+}
+
+    /* Mobile Styles */
+    @media (max-width: 768px) {
+      /* Hide desktop menu */
+      nav ul {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        position: absolute;
+        top: 60px; /* Adjust based on header height */
+        right: 20px;
+        background-color: #000000;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 1001; /* Higher z-index to appear above search */
+      }
+
+      /* Show hamburger menu */
+      .hamburger {
+        display: flex;
+        margin-left: auto; /* Push hamburger to the right */
+      }
+
+      /* Show menu when active */
+      nav ul.active {
+        display: flex;
+      }
+
+      .selector-container {
+        gap: 10px; /* Reduced gap between selects */
+        margin: 1rem 0; /* Reduced margin */
+      }
+
+      .search-container {
+        padding: 1rem 20px;
+        width: calc(100% - 40px); /* Subtract 40px (20px on each side) */
+        max-width: 90%;
+        border-radius: 10px;
+      }
+
+      .search-container h1 {
+    font-size: 1.2rem; /* Reduce font size */
+    white-space: nowrap; /* Prevent line breaks */
+    padding: 0 10px; /* Add horizontal padding */
+  }
+
+      #pdfSearch {
+        padding: 10px 15px; /* Reduced padding */
+        font-size: 14px; /* Slightly smaller font */
+      }
+
+      .level-selector, .board-selector {
+        padding: 10px; /* Reduced padding */
+        font-size: 14px; /* Smaller font */
+      }
+
+      .search-bar {
+        flex-direction: column;
+      }
+
+      /* Remove search button */
+      .search-btn {
+        display: none;
+      }
+
+      #searchResults {
+        max-height: 200px;
+      }
+
+      footer {
+    font-size: 10px; /* Reduce font size */
+    padding: 10px; /* Adjust padding */
+    white-space: normal; /* Allow text to wrap */
+    text-align: center; /* Center-align text */
+    overflow-x: hidden; /* Prevent horizontal overflow */
+  }
+    }
+  </style>
+  <link rel="icon" href="physpro-icon.png" type="image/png">
+  <script>
+    // Initialize once in head
+    let pdfDatabase = []; // ← Only declaration needed
+
+    // Hamburger Menu Toggle
+    document.addEventListener('DOMContentLoaded', () => {
+      const hamburger = document.querySelector('.hamburger');
+      const navMenu = document.querySelector('nav ul');
+
+      hamburger.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+      });
+    });
+    // Mobile Dropdown Toggle
+document.addEventListener('DOMContentLoaded', () => {
+  // Check if mobile
+  const isMobile = window.matchMedia('(max-width: 768px)').matches;
+  
+  if (isMobile) {
+    document.querySelectorAll('nav li').forEach(li => {
+      const link = li.querySelector('a');
+      const dropdown = li.querySelector('.dropdown-menu');
+
+      link.addEventListener('click', (e) => {
+        e.preventDefault(); // Prevent default link behavior
+        const isOpen = dropdown.style.display === 'block';
+        // Close all dropdowns first
+        document.querySelectorAll('.dropdown-menu').forEach(d => d.style.display = 'none');
+        // Toggle current dropdown
+        dropdown.style.display = isOpen ? 'none' : 'block';
+      });
+    });
+  }
+});
+  </script>
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PRQDDW6L"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <div class="wrapper">
+    <header>
+      <div class="logo-container">
+        <img src="physpro-icon.png" alt="PhysPro Logo">
+        <div class="logo">PhysPro</div>
+      </div>
+      <!-- Hamburger Menu Icon -->
+      <div class="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="olevel-cie/V1.html"><b>Cambridge IGCSE</b></a></li>
+          <li><a href="alevel-cie/cieialv1.html"><b>Cambridge A' Level</b></a></li>
+          <li><a href="olevel-edexcel/pastpapers-(WEBSITE).html"><b>Edexcel IGCSE</b></a></li>
+          <li><a href="alevel-edexcel/ialhomepage.html"><b>Edexcel A' Level</b></a></li>
+          <li>
+            <a href="#"><b>Study Resources</b></a>
+            <div class="dropdown-menu">
+              <a href="cie-igcse-physics-syllabus.pdf" target="_blank">CIE IGCSE Syllabus</a>
+              <a href="cie-as-and-a-level-physics-syllabus.pdf" target="_blank">CIE AS/A Level Syllabus</a>
+              <a href="edexcel-igcse-physics-syllabus.pdf" target="_blank">Edexcel IGCSE Syllabus</a>
+              <a href="edexcel-as-and-a-level-physics-syllabus.pdf" target="_blank">Edexcel AS/A Level Syllabus</a>
+              <div class="notice-text" style="color: pink; margin: 10px 0;"><h6>🌟Become a Revision Notes Contributor!🌟 Help students ace their exams with your concise notes; all credits given🚀 Interested? Email us at: <a href="mailto:physprobd@gmail.com">physprobd@gmail.com</a></h6></div>
+            </div>
+          </li>
+          <li>
+            <a href="#"><b>IGCSE/IAL Book PDFs</b></a>
+            <div class="dropdown-menu">
+              <a href="igcse-student-book-edexcel.pdf" target="_blank">Edx. IGSCE Student Book</a>
+              <a href="New-Physics-Student-Book-1.pdf" target="_blank">Edx. IAL Student Book 1</a>
+              <a href="New-Physics-Student-Book-2.pdf" target="_blank">Edx. IAL Student Book 2</a>
+              <a href="IALlabBook.pdf" target="_blank">Edx. IAL Lab Book</a>
+              <a href="Cambridge-IGCSE-Physics-Student-Book-4th-edition.pdf" target="_blank">CIE IGSCE Student Book</a>
+              <a href="Cambridge-IGCSE-Physics-Practical-Workbook.pdf" target="_blank">CIE IGSCE Practical WorkBook</a>
+              <a href="Cambridge-International-AS-and-A-Level-Physics-Coursebook.pdf" target="_blank">CIE IAL Course Book (Cambridge)</a>
+              <a href="Cambridge-International-AS-and-A-Level-Physics-Students-Book-3rd-Edition.pdf" target="_blank">CIE IAL Student Book 3rd Edition (Hodder)</a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="hero">
+      <div class="search-container">
+        <h1>you're just a search away 🔍✨</h1>
+        <div class="selector-container">
+          <select class="level-selector" id="levelSelect">
+            <option value="">Select Level</option>
+            <option value="olevel">O' Level</option>
+            <option value="alevel">A' Level</option>
+          </select>
+          <select class="board-selector" id="boardSelect">
+            <option value="">Select Board</option>
+            <option value="cie">Cambridge (CIE)</option>
+            <option value="edexcel">Edexcel</option>
+          </select>
+        </div>
+        <div class="search-bar">
+          <input type="text" id="pdfSearch" 
+       aria-label="Search PDF documents"
+       placeholder="Search past papers by year, month, or QP/MS...">
+        </div>
+        <div id="searchResults"></div>
+      </div>
+    </div>
+
+    <footer>
+      &copy; 2025 PhysPro. All rights reserved. Non-profit project by Adi & Tahmed.
+    </footer>
+  </div>
+
+  <!-- Search Functionality Script -->
+  <script>
+    // Load PDF index
+    fetch('pdf_index.json')
+      .then(response => response.json())
+      .then(data => pdfDatabase = data)
+      .catch(error => console.error('Error loading PDF index:', error));
+
+      function searchPDFs() {
+  const level = document.getElementById('levelSelect').value;
+  const board = document.getElementById('boardSelect').value;
+  const query = document.getElementById('pdfSearch').value.toLowerCase().trim();
+
+  // Clear previous results
+  const resultsDiv = document.getElementById('searchResults');
+  resultsDiv.innerHTML = "";
+
+  // Exit early if no search query
+  if (!query) return;
+
+  // Only check level/board when there's a query
+  if (!level || !board) {
+    showError("Please select both Level and Board first.");
+    return;
+      }
+
+      const keywords = query.split(/\s+/).filter(Boolean);
+      const results = pdfDatabase.filter(pdf => {
+        if (pdf.level !== level || pdf.board !== board) return false;
+        return keywords.every(keyword =>
+          pdf.title.toLowerCase().includes(keyword) ||
+          pdf.content.toLowerCase().includes(keyword) ||
+          pdf.keywords.some(kw => kw.includes(keyword))
+        );
+      });
+
+      results.sort((a, b) => {
+        const aTitleMatch = keywords.some(keyword => a.title.toLowerCase().includes(keyword));
+        const bTitleMatch = keywords.some(keyword => b.title.toLowerCase().includes(keyword));
+        return bTitleMatch - aTitleMatch;
+      });
+
+      displayResults(results);
+    }
+
+    function showError(message) {
+      const resultsDiv = document.getElementById('searchResults');
+      resultsDiv.innerHTML = `<p style="color: #ff4444; animation: shake 0.5s;">${message}</p>`;
+    }
+
+    function displayResults(results) {
+      const query = document.getElementById('pdfSearch').value.toLowerCase().trim();
+      const keywords = query.split(/\s+/).filter(Boolean);
+
+      const resultsDiv = document.getElementById('searchResults');
+      resultsDiv.innerHTML = results.length > 0
+        ? results.map(pdf => {
+    let title = pdf.title;
+    keywords.forEach(keyword => {
+      // Escape special regex characters
+      const escapedKeyword = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const regex = new RegExp(`(${escapedKeyword})`, 'gi');
+      title = title.replace(regex, '<span style="background-color: #06c5ff; color: #000;">$1</span>');
+    });
+            return `
+              <a href="${pdf.path}" class="pdf-link" target="_blank" style="text-decoration: none; color: inherit;">
+                📄 ${title}
+              </a>
+            `;
+          }).join('')
+        : `<p style="color: #fff">No past papers found. Try different keywords</p>`;
+    }
+
+    // Enable live search as user types
+    let searchTimeout;
+document.getElementById('pdfSearch').addEventListener('input', function () {
+  clearTimeout(searchTimeout);
+  searchTimeout = setTimeout(() => {
+    const query = this.value.trim();
+    if (!query) {
+      document.getElementById('searchResults').innerHTML = "";
+    } else {
+      searchPDFs();
+    }
+  }, 100); // 300ms delay
+});
+
+  // Clear error message when Level or Board is selected
+document.getElementById('levelSelect').addEventListener('change', () => {
+  document.getElementById('searchResults').innerHTML = "";
+  // Only search if there's a query
+  if (document.getElementById('pdfSearch').value.trim()) {
+    searchPDFs();
+  }
+});
+
+document.getElementById('boardSelect').addEventListener('change', () => {
+  document.getElementById('searchResults').innerHTML = "";
+  if (document.getElementById('pdfSearch').value.trim()) {
+    searchPDFs();
+  }
+});
+// Add fetch timeout
+const fetchTimeout = 5000; // 5 seconds
+
+Promise.race([
+  fetch('pdf_index.json'),
+  new Promise((_, reject) =>
+    setTimeout(() => reject(new Error('Request timed out')), fetchTimeout)
+  )
+])
+  .then(response => {
+    if (!response.ok) throw new Error('Network response was not ok');
+    return response.json();
+  })
+  .then(data => pdfDatabase = data)
+  .catch(error => console.error('Error loading PDF index:', error));
+  window.onerror = function(message, source, lineno, colno, error) {
+  console.error(`Error: ${message} at ${source}:${lineno}`);
+};
+  </script>
+</body>
+</html>

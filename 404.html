@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found - 404 Error</title>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PRQDDW6L');</script>
+    <!-- End Google Tag Manager -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background: #000000;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .error-code {
+            font-size: 8rem;
+            font-weight: 700;
+            color: #dc3545;
+            margin-bottom: 1rem;
+            line-height: 1;
+            animation: pulse 2s infinite;
+        }
+
+        .error-illustration {
+            width: 200px;
+            height: auto;
+            margin: 2rem 0;
+            opacity: 0.9;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1.125rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            color: #cac4ca;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: #007bff;
+            color: white;
+            border: 2px solid #007bff;
+        }
+
+        .btn-primary:hover {
+            background: #0056b3;
+            border-color: #0056b3;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #007bff;
+            border: 2px solid #007bff;
+        }
+
+        .btn-secondary:hover {
+            background: #007bff15;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.05); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.8; }
+        }
+
+        @media (max-width: 768px) {
+            .error-code {
+                font-size: 6rem;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PRQDDW6L"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div class="container">
+        <div class="error-code">404</div>
+        
+        <svg class="error-illustration" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#dc3545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M15 9L9 15" stroke="#dc3545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M9 9L15 15" stroke="#dc3545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+
+        <h1>⚠️ Page Under Maintenance ⚠️</h1>
+        <p>We apologise for the temporary setback. Please try again a little later.</p>
+
+        <div class="cta-buttons">
+            <a href="index.html" class="btn btn-primary">Return to Homepage</a>
+            <a href="mailto:physprobd@gmail.com" class="btn btn-secondary">Contact Support</a>
+        </div>
+    </div>
+</body>
+</html>
