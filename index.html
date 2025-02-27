@@ -23,6 +23,29 @@
   <title>PhysPro</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
+     /* Hero Section */
+     .hero {
+  background-image: linear-gradient(to bottom, #000000, #000000), url("bg9.webp");
+  background-blend-mode: overlay; /* Blend gradient with image */
+}
+    .hero {
+      background-image: url("bg9-low-res.webp"); /* Low-res placeholder */
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      color: #ffffff;
+      position: relative;
+    }
+    /* Load high-res image after the page loads */
+.hero.loaded {
+  background-image: url("bg9.webp"); /* High-res image */
+}
     /* ==== YOUR EXISTING CSS ==== */
     html, body {
       margin: 0;
@@ -133,22 +156,6 @@
 
     .dropdown-menu a:hover {
       background-color: #06c5ff;
-    }
-
-    /* Hero Section */
-    .hero {
-      background-image: url("bg9.webp");
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 20px;
-      color: #ffffff;
-      position: relative;
     }
 
     .search-container {
