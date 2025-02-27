@@ -51,7 +51,7 @@
       margin: 0;
       padding: 0;
       height: 100vh;
-      overflow: hidden;
+      overflow-x: hidden;
       font-family: 'Roboto', Arial, sans-serif;
       line-height: 1.6;
     }
@@ -59,7 +59,7 @@
     .wrapper {
       display: flex;
       flex-direction: column;
-      height: 100%;
+      height: 100vh;
     }
 
     header {
@@ -280,12 +280,14 @@
   color: #777777;
   padding: 10px 20px;
   font-size: 12px;
-  flex: 0 0 auto;
+  flex-shrink: 0;
   display: flex; /* Use Flexbox */
   justify-content: center; /* Center content horizontally */
   align-items: center; /* Center content vertically */
   white-space: nowrap; /* Prevent text from wrapping */
   overflow: hidden; /* Hide overflow if content is too long */
+  z-index: 1001; /* Higher than search-container */
+  position: relative; /* Ensure footer stays in the document flow */
 }
 
     /* Mobile Styles */
@@ -360,7 +362,7 @@
       footer {
     font-size: 10px; /* Reduce font size */
     padding: 10px; /* Adjust padding */
-    white-space: nowrap; /* Allow text to wrap */
+    white-space: normal; /* Allow text to wrap */
     text-align: center; /* Center-align text */
     overflow-x: hidden; /* Prevent horizontal overflow */
     border-bottom: #000000;
