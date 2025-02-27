@@ -173,12 +173,20 @@
   overflow-y: auto; /* Enable vertical scrolling */
   margin-top: 1rem;
   text-align: left;
-  background-color: #131212;
+  background-color: rgba(0, 0, 0, 0.9); /* Semi-transparent background */
   padding: 10px;
   border-radius: 5px;
   z-index: 999;
   scrollbar-width: thin; /* Firefox */
   scrollbar-color: #06c5ff rgba(255, 255, 255, 0.1); /* Firefox */
+  opacity: 0; /* Start fully transparent */
+  visibility: hidden; /* Start hidden */
+  transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth transition */
+}
+
+#searchResults.active {
+  opacity: 1; /* Fully visible */
+  visibility: visible; /* Make it visible */
 }
 
 /* Customize scrollbar */
@@ -339,7 +347,7 @@
       }
 
       #searchResults {
-        max-height: 200px;
+        max-height: 125px;
       }
 
       footer {
@@ -563,15 +571,33 @@ document.addEventListener('DOMContentLoaded', () => {
     // Enable live search as user types
     let searchTimeout;
 document.getElementById('pdfSearch').addEventListener('input', function () {
+  const searchResults = document.getElementById('searchResults');
+  const query = this.value.trim();
+
   clearTimeout(searchTimeout);
   searchTimeout = setTimeout(() => {
-    const query = this.value.trim();
     if (!query) {
-      document.getElementById('searchResults').innerHTML = "";
+      // Hide search results if there's no query
+      searchResults.classList.remove('active');
+      searchResults.innerHTML = ""; // Clear results
     } else {
-      searchPDFs();
+      // Show search results if there's a query
+      searchResults.classList.add('active');
+      searchPDFs(); // Perform the search
     }
   }, 100); // 300ms delay
+});
+
+// Clear search results when clicking outside
+document.addEventListener('click', (e) => {
+  const searchResults = document.getElementById('searchResults');
+  const searchInput = document.getElementById('pdfSearch');
+
+  if (!e.target.closest('.search-container')) {
+    searchResults.classList.remove('active');
+    searchResults.innerHTML = ""; // Clear results
+    searchInput.value = ""; // Clear input
+  }
 });
 
   // Clear error message when Level or Board is selected
