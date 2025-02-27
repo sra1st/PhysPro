@@ -305,8 +305,14 @@
         padding: 10px;
         border-radius: 5px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        z-index: 1001; /* Higher z-index to appear above search */
+        z-index: 1002; /* Higher z-index to appear above search */
       }
+      /* Dropdown menu */
+  .dropdown-menu {
+    z-index: 1003; /* Ensure it's higher within the nav context */
+    max-height: 200px; /* Prevent excessive height */
+    overflow-y: auto; /* Add scroll if needed */
+  }
 
       /* Show hamburger menu */
       .hamburger {
@@ -367,7 +373,7 @@
     text-align: center; /* Center-align text */
     overflow-x: hidden; /* Prevent horizontal overflow */
     border-bottom: #000000;
-  }
+    z-index: 1001;
     }
   </style>
   <link rel="icon" href="physpro-icon.png" type="image/png">
