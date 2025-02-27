@@ -173,7 +173,7 @@
   overflow-y: auto; /* Enable vertical scrolling */
   margin-top: 1rem;
   text-align: left;
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: transparent;
   padding: 10px;
   border-radius: 5px;
   z-index: 999;
@@ -356,33 +356,51 @@
     // Initialize once in head
     let pdfDatabase = []; // ← Only declaration needed
 
-    // Hamburger Menu Toggle
-    document.addEventListener('DOMContentLoaded', () => {
-      const hamburger = document.querySelector('.hamburger');
-      const navMenu = document.querySelector('nav ul');
-
-      hamburger.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
-      });
-    });
-    // Mobile Dropdown Toggle
+    // Hamburger Menu Toggle (Updated)
 document.addEventListener('DOMContentLoaded', () => {
-  // Check if mobile
+  const hamburger = document.querySelector('.hamburger');
+  const navMenu = document.querySelector('nav ul');
+  const body = document.body;
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navMenu.classList.toggle('active');
+    body.classList.toggle('menu-open');
+  });
+});
+   // Mobile Dropdown Toggle (Updated)
+document.addEventListener('DOMContentLoaded', () => {
   const isMobile = window.matchMedia('(max-width: 768px)').matches;
-  
+
   if (isMobile) {
     document.querySelectorAll('nav li').forEach(li => {
       const link = li.querySelector('a');
       const dropdown = li.querySelector('.dropdown-menu');
 
-      link.addEventListener('click', (e) => {
-        e.preventDefault(); // Prevent default link behavior
-        const isOpen = dropdown.style.display === 'block';
-        // Close all dropdowns first
-        document.querySelectorAll('.dropdown-menu').forEach(d => d.style.display = 'none');
-        // Toggle current dropdown
-        dropdown.style.display = isOpen ? 'none' : 'block';
-      });
+      // Only add dropdown toggle if a dropdown exists
+      if (dropdown) {
+        link.addEventListener('click', (e) => {
+          e.preventDefault(); // Prevent default link behavior
+          const isOpen = dropdown.style.display === 'block';
+
+          // Close all dropdowns first
+          document.querySelectorAll('.dropdown-menu').forEach(d => {
+            d.style.display = 'none';
+          });
+
+          // Toggle current dropdown
+          dropdown.style.display = isOpen ? 'none' : 'block';
+        });
+      }
+    });
+
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('nav li')) {
+        document.querySelectorAll('.dropdown-menu').forEach(d => {
+          d.style.display = 'none';
+        });
+      }
     });
   }
 });
