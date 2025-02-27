@@ -307,13 +307,34 @@
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         z-index: 1002; /* Higher z-index to appear above search */
       }
-      /* Dropdown menu */
+      @media (max-width: 768px) {
+  /* Mobile Dropdown Scrollbars */
   .dropdown-menu {
-    z-index: 1003; /* Ensure it's higher within the nav context */
-    max-height: 200px; /* Prevent excessive height */
-    overflow-y: auto; /* Add scroll if needed */
+    scrollbar-width: thin; /* For Firefox */
+    scrollbar-color: #06c5ff rgba(255, 255, 255, 0.1); /* For Firefox */
+    max-height: 250px; /* Adjust based on your needs */
+    overflow-y: auto; /* Ensure scrolling is enabled */
   }
 
+  /* Custom Webkit Scrollbars */
+  .dropdown-menu::-webkit-scrollbar {
+    width: 6px; /* Wider scrollbar for mobile */
+  }
+
+  .dropdown-menu::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+  }
+
+  .dropdown-menu::-webkit-scrollbar-thumb {
+    background: #06c5ff;
+    border-radius: 3px;
+  }
+
+  .dropdown-menu::-webkit-scrollbar-thumb:hover {
+    background: #059dc7;
+  }
+}
       /* Show hamburger menu */
       .hamburger {
         display: flex;
